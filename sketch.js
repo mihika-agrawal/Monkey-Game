@@ -87,7 +87,7 @@ function draw() {
  }
   if (keyDown("r") && gamestate===END){
     gamestate= PLAY;
-    
+    monkey.changeAnimation("moving",monkey_running);
   }
   
     
