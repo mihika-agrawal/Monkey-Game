@@ -33,6 +33,7 @@ function setup() {
  monkey=createSprite(80,315,20,20);
   monkey.addAnimation("moving",monkey_running);
   monkey.scale=0.1;
+  monkey.addAnimation("stop",monkey_stop);
   
   foodGroup=createGroup();
   obstaclesGroup=createGroup();
