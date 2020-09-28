@@ -16,7 +16,7 @@ function preload(){
   bananaImage = loadImage("banana.png");
   obstacleImage = loadImage("obstacle.png");
  
-  monkey_stop= loadImage("sprite_0.png");
+  monkey_stop= loadAnimation("sprite_0.png");
 }
 
 
@@ -51,14 +51,14 @@ function draw() {
   if(gamestate===PLAY){stroke("black");
   textSize=20;
   fill("black");
-  survivalTime=Math.ceil(getFrameRate()/30);
+  
   text("Survival Time: "+survivalTime,100,100);
- 
+
   if(keyDown("space")&& monkey.y >= 100) {
         monkey.velocityY = -12;
     }
     monkey.velocityY = monkey.velocityY + 0.8
-  
+
   if(ground.x<200){
     ground.x=ground.width/2;
   }
@@ -68,6 +68,7 @@ function draw() {
   
   if (monkey.isTouching(foodGroup)){
      foodGroup.destroyEach();
+    survivalTime=survivalTime+1;
 }
   if(monkey.isTouching(obstaclesGroup)){
     gamestate= END;
@@ -80,7 +81,7 @@ function draw() {
     foodGroup.destroyEach();
     obstaclesGroup.destroyEach();
     survivalTime=0;
-    monkey.changeImage=(monkey_stop);
+    monkey.changeAnimation("stop",monkey_stop);
  }
   if (keyDown("r") && gamestate===END){
     gamestate= PLAY;
