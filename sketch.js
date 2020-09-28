@@ -49,10 +49,7 @@ function draw() {
   monkey.collide(ground);
   
   if(gamestate===PLAY){stroke("black");
-  textSize=20;
-  fill("black");
-  
-  text("Survival Time: "+survivalTime,100,100);
+ 
 
   if(keyDown("space")&& monkey.y >= 100) {
         monkey.velocityY = -12;
@@ -70,6 +67,10 @@ function draw() {
      foodGroup.destroyEach();
     survivalTime=survivalTime+1;
 }
+  textSize=20;
+  fill("black");
+  text("Survival Time: "+survivalTime,100,100);
+                       
   if(monkey.isTouching(obstaclesGroup)){
     gamestate= END;
   }
@@ -81,7 +82,7 @@ function draw() {
     foodGroup.destroyEach();
     obstaclesGroup.destroyEach();
     survivalTime=0;
-    monkey.changeAnimation("stop",monkey_stop);
+    monkey.changeAnimation("stop", monkey_stop);
  }
   if (keyDown("r") && gamestate===END){
     gamestate= PLAY;
